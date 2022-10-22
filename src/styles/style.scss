@@ -1,0 +1,236 @@
+@import './vars.scss';
+@import url('https://fonts.googleapis.com/css2?family=Alice&family=Jura&family=Montserrat:ital@0;1&display=swap');
+
+* {
+  box-sizing: border-box;
+}
+html,
+body {
+  height: 100%;
+  min-width: 320px;
+  background-color: #eaeaea;
+  font-family: 'Montserrat', sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+div,
+img {
+  margin: 0;
+  padding: 0;
+}
+a {
+  color: black;
+  text-decoration: none;
+}
+
+#root {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden;
+  position: relative;
+}
+.prodGridHeadphones {
+  display: grid;
+  grid-template: 1fr / repeat(3, 1fr);
+  column-gap: 4%;
+  row-gap: 20px;
+}
+.mainContainer {
+  flex: 1 1 auto;
+  padding: 3vh 12px;
+
+  > h1 {
+    margin-bottom: 1.5vh;
+    margin-top: 1.5vh;
+  }
+  .decorPreview {
+    margin-top: 5vw;
+    overflow: hidden;
+    margin-bottom: 3vh;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+    border-radius: 30px;
+    height: 22vw;
+    background-color: black;
+    display: flex;
+    align-items: center;
+    .title {
+      width: 49%;
+      height: fit-content;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      > h1 {
+        text-align: end;
+        font-size: 2.9vw;
+        padding: 0;
+        width: fit-content;
+        height: fit-content;
+        color: whitesmoke;
+        span {
+          color: orangered;
+        }
+      }
+    }
+    .photoPreview {
+      width: 49%;
+      position: relative;
+      // width: 25vw;
+      height: 22vw;
+      img {
+        // width: 100%;
+        height: 100%;
+        position: absolute;
+        bottom: -29px;
+      }
+    }
+  }
+}
+.service {
+  margin: 100px 0 50px;
+  display: flex;
+  flex-direction: column;
+  gap: 3vw;
+}
+.serviceItem {
+  font-weight: bold;
+  padding: 1.4vw 2vw;
+  width: 100%;
+  background-color: white;
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+  border-radius: 30px;
+  .text {
+    font-weight: normal;
+
+    color: rgb(57, 57, 57);
+    margin-top: 1vw;
+    margin-left: 1vw;
+  }
+}
+
+.basket {
+  display: flex;
+  gap: 2vw;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  // .img {
+  // }
+  .info {
+    text-align: center;
+    p {
+      margin-top: 1vw;
+    }
+  }
+  .button {
+    button {
+      background-color: black;
+      color: #eaeaea;
+    }
+  }
+}
+.fullBasket {
+  display: flex;
+  justify-content: space-between;
+  gap: 5vw;
+  .basketList {
+    display: grid;
+    grid-template: 1fr / 3fr 1fr;
+    gap: 1vw;
+    width: 100%;
+    .basketManipulate {
+      background-color: white;
+      box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+      border-radius: 30px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      p {
+        font-size: 3vw;
+      }
+      .counter {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 20%;
+
+        .basketBtn {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          color: white;
+          font-size: 3vw;
+          width: 2.5vw;
+          height: 2.5vw;
+          border-radius: 50%;
+          background-color: orangered;
+        }
+      }
+      .remove {
+        margin-top: 4vw;
+        color: white;
+        width: 60%;
+        background-color: orangered;
+        border-radius: 20px;
+      }
+    }
+  }
+  .basketOrder {
+    height: 100%;
+    padding: 1vw 2vw;
+    width: 40%;
+    background-color: white;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+    border-radius: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    .total {
+      margin-top: 2vw;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+    }
+    .buy {
+      margin-top: 4vw;
+      color: white;
+      width: 60%;
+      background-color: yellowgreen;
+      border-radius: 20px;
+      font-size: 2.2vw;
+      text-align: center;
+      margin-bottom: 1vw;
+    }
+  }
+}
+
+@media (min-width: 1200px) {
+  .prodGridHeadphones {
+    grid-template: 1fr / repeat(3, 1fr);
+  }
+}
+@media (max-width: 992px) {
+  .prodGridHeadphones {
+    grid-template: 1fr / repeat(2, 1fr);
+  }
+}
+@media (max-width: 768px) {
+  .prodGridHeadphones {
+    grid-template: 1fr / repeat(2, 48%);
+  }
+}
+@media (max-width: 576px) {
+  .prodGridHeadphones {
+    grid-template: 1fr / repeat(1, 1fr);
+  }
+}

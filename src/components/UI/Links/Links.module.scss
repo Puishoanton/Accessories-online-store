@@ -1,0 +1,92 @@
+.linkBasket {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  img {
+    width: 2.5vw;
+    height: 2.5vw;
+  }
+  .basketCount {
+    font-size: 1.5vw;
+    color: white;
+    position: absolute;
+    top: -5px;
+    right: -12px;
+    width: 1.8vw;
+    height: 1.8vw;
+    background-color: #ffa542;
+    border-radius: 50%;
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+.linkFav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  img {
+    width: 2.5vw;
+    height: 2.5vw;
+  }
+  .favCount {
+    font-size: 1.5vw;
+    color: white;
+    position: absolute;
+    top: -5px;
+    right: -12px;
+    width: 1.8vw;
+    height: 1.8vw;
+    background-color: #ffa542;
+    border-radius: 50%;
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+.login {
+  background-color: transparent;
+  border: none;
+  padding: 0;
+  svg {
+    width: 2.5vw;
+    height: 2.5vw;
+    fill: #838383;
+  }
+}
+.logout {
+  background-color: transparent;
+  transition: background-color 0.2s ease-in;
+  border: 1px solid black;
+  border-radius: 30px;
+  padding: 0 1vw;
+  &:hover {
+    background-color: #cacaca;
+    transition: background-color 0.2s ease-in;
+  }
+}
+.favCards {
+  padding: 1vw;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1vw;
+  max-height: 60vh;
+  height: fit-content;
+  overflow-y: scroll;
+}
+.isEmpty {
+  font-size: 4vw;
+  background: whitesmoke;
+  width: 100%;
+  border-radius: 20px;
+  padding: 0 1vw;
+  text-align: center;
+  margin: 1vw;
+}

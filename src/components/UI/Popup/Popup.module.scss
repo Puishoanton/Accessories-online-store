@@ -1,0 +1,43 @@
+.popup {
+  opacity: 0;
+  transition: opacity 0.2s ease-in;
+  pointer-events: none;
+  z-index: 1;
+  position: absolute;
+  top: 30px;
+  // left: -380px;
+  width: 400px;
+  height: 300px;
+  background: rgba(0, 0, 0, 0.332);
+}
+.active {
+  opacity: 1;
+  transition: opacity 0.2s ease-in;
+  pointer-events: all;
+}
+.brandsPopup {
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
+  z-index: 10;
+  top: 8vh;
+  left: 27vw;
+  background-color: rgba(157, 157, 157, 0.8);
+  border-radius: 30px;
+  width: 25vw;
+  height: fit-content;
+}
+
+.favoritePopup {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1vw;
+  background: rgba(0, 0, 0, 0.2);
+  width: 40vw;
+  height: fit-content;
+  top: 50px;
+  left: -37vw;
+}
+.popup22 {
+  background: rgb(0, 8, 255);
+  width: fit-content;
+  height: fit-content;
+}

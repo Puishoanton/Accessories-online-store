@@ -1,0 +1,17 @@
+.btnSubmit {
+  background: #84fab0;
+  background: -webkit-linear-gradient(to right, rgba(132, 250, 176, 1), rgba(143, 211, 244, 1));
+  background: linear-gradient(to right, rgba(132, 250, 176, 1), rgba(143, 211, 244, 1));
+}
+.formBox {
+  max-width: 500px;
+  min-width: 50%;
+}
+.alert {
+  z-index: 1;
+  position: absolute;
+  top: 0px;
+}
+.account {
+  all: unset;
+}
