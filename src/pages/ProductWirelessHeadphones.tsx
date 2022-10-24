@@ -85,7 +85,10 @@ const ProductWirelessHeadphonesPage = () => {
             </ul>
           </div>
           <div className={styles.buttonsBox}>
-            <Button onClick={() => nav(ORDER_PATH)}>BUY</Button>
+            <Button onClick={() => {
+                dispatch(addToBasket(data || null))
+                nav(ORDER_PATH)
+              }}>BUY</Button>
             <Button
               variant={isItemInsideBasket ? 'danger' : 'primary'}
               onClick={() => {

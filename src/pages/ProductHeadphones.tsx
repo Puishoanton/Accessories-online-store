@@ -77,9 +77,15 @@ const ProductHeadphonesPage = () => {
             </ul>
           </div>
           <div className={styles.buttonsBox}>
-            <Button onClick={() => nav(ORDER_PATH)}>BUY</Button>
             <Button
-              variant={isItemInsideBasket ? 'danger': 'primary'}
+              onClick={() => {
+                dispatch(addToBasket(data || null))
+                nav(ORDER_PATH)
+              }}>
+              BUY
+            </Button>
+            <Button
+              variant={isItemInsideBasket ? 'danger' : 'primary'}
               onClick={() => {
                 isItemInsideBasket
                   ? dispatch(removeBasket(data || undefined))

@@ -50,54 +50,54 @@ const Register: React.FC<RegisterProps> = ({ setHasAccount }) => {
       breakpoints={['xxxl', 'xxl', 'xl', 'lg', 'md', 'sm', 'xs', 'xxs']}
       className={styles.formBox}>
       <h1>Register</h1>
-      <Form>
-        <FloatingLabel
-          controlId='floatingInput'
-          className='mb-3'
-          label={emailValidation ? 'Invalid Email' : 'Email address'}>
-          <Form.Control
-            className={isEmailValid ? '' : styles.error}
-            value={email}
-            onChange={e => setEmail(e.target.value)}
-            placeholder='Email'
-            type='email'
-            onFocus={React.useCallback(() => setEmailValidation(true), [])}
-          />
-        </FloatingLabel>
-        <FloatingLabel label='Password' className='mb-3' controlId='floatingPassword'>
-          <Form.Control
-            className={isPasswordValid ? '' : styles.error}
-            value={password}
-            onChange={e => setPassword(e.target.value)}
-            placeholder='Password'
-            type='password'
-            onFocus={() => setPasswodrValidation(true)}
-          />
-        </FloatingLabel>
-        {passwodrValidation && (
-          <PasswordChecklist
-            rules={['minLength', 'specialChar', 'capital']}
-            minLength={8}
-            value={password}
-            onChange={cb}
-          />
-        )}
-        <Col className='d-flex justify-content-between align-items-center'>
-          <div onClick={() => setHasAccount(true)} className={styles.account}>
-            Already have an account?
-          </div>
-          <Button
-            className={btnClass.join(' ')}
-            onClick={() => {
-              dispatch(isLoggedStatus(true))
-              register()
-            }}
-            disabled={!isEmailValid || !isPasswordValid}
-            type='submit'>
-            Submit
-          </Button>
-        </Col>
-      </Form>
+      {/* <Form> */}
+      <FloatingLabel
+        controlId='floatingInput'
+        className='mb-3'
+        label={emailValidation ? 'Email address' : 'Invalid Email'}>
+        <Form.Control
+          className={isEmailValid ? '' : styles.error}
+          value={email}
+          onChange={e => setEmail(e.target.value)}
+          placeholder='Email'
+          type='email'
+          onFocus={React.useCallback(() => setEmailValidation(true), [])}
+        />
+      </FloatingLabel>
+      <FloatingLabel label='Password' className='mb-3' controlId='floatingPassword'>
+        <Form.Control
+          className={isPasswordValid ? '' : styles.error}
+          value={password}
+          onChange={e => setPassword(e.target.value)}
+          placeholder='Password'
+          type='password'
+          onFocus={() => setPasswodrValidation(true)}
+        />
+      </FloatingLabel>
+      {passwodrValidation && (
+        <PasswordChecklist
+          rules={['minLength', 'specialChar', 'capital']}
+          minLength={8}
+          value={password}
+          onChange={cb}
+        />
+      )}
+      <Col className='d-flex justify-content-between align-items-center'>
+        <div onClick={() => setHasAccount(true)} className={styles.account}>
+          Already have an account?
+        </div>
+        <Button
+          className={btnClass.join(' ')}
+          onClick={() => {
+            dispatch(isLoggedStatus(true))
+            register()
+          }}
+          disabled={!isEmailValid || !isPasswordValid}
+          type='submit'>
+          Submit
+        </Button>
+      </Col>
+      {/* </Form> */}
     </Col>
   )
 }

@@ -8,9 +8,9 @@
   min-width: 50%;
 }
 .alert {
-  z-index: 1;
+  z-index: 101;
   position: absolute;
-  top: 0px;
+  top: 10px;
 }
 .account {
   all: unset;

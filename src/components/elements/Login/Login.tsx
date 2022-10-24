@@ -57,6 +57,7 @@ const Login: React.FC<LoginProps> = ({ setHasAccount }) => {
   return (
     <Col
       breakpoints={['xxxl', 'xxl', 'xl', 'lg', 'md', 'sm', 'xs', 'xxs']}
+      
       className={styles.formBox}>
       {alert && (
         <Alert

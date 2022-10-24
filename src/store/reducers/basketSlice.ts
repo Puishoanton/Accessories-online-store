@@ -14,10 +14,12 @@ export const basketSlice = createSlice({
     },
     removeBasket: (state, action: PayloadAction<IProducts | undefined>) => {
       const id = action.payload?.id
-      console.log('first')
       state.basket = state.basket?.filter(card => card.id !== id)
+    },
+    removeAll: state => {
+      state.basket = []
     },
   },
 })
 export default basketSlice.reducer
-export const { addToBasket, removeBasket } = basketSlice.actions
+export const { addToBasket, removeBasket, removeAll } = basketSlice.actions
