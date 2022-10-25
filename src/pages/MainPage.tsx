@@ -7,6 +7,7 @@ import { productAPI } from '../services/productsService'
 import { CasesType, IProducts } from '../types/IProducts'
 import { useSortProducts } from '../hooks/useSortProducts'
 import Sort from '../components/UI/Sort/Sort'
+import Loader from '../components/UI/Loader/Loader'
 
 const MainPage = () => {
   const [sortW, setSortW] = useState('popular')
@@ -14,9 +15,9 @@ const MainPage = () => {
   const {
     data: headphones,
     isError: hError,
-    isLoading: hIsloading,
+    isLoading: hIsLoading,
   } = productAPI.useGetHeadphonesQuery()
-  const { data: cases, isError: cError, isLoading: cIsloading } = productAPI.useGetAllCasesQuery()
+  const { data: cases, isError: cError, isLoading: cIsLoading } = productAPI.useGetAllCasesQuery()
   const {
     data: wirelessHeadphones,
     isError: wError,
@@ -30,7 +31,7 @@ const MainPage = () => {
   const sortedHeadphones = useSortProducts(sortH, headphones?.headPhones || [])
   return (
     <Container className='mainContainer'>
-      {false && wError && wIsLoading && cError && cIsloading && hError && hIsloading}
+      {false && wError && wIsLoading && cError && hError}
       <Row className='decorPreview'>
         <div className='title'>
           <h1>
@@ -43,41 +44,59 @@ const MainPage = () => {
       </Row>
       <h1>{cases?.title}</h1>
       <Row className='prodGridHeadphones'>
-        {cases?.cases.map((item: CasesType) => (
-          <CasesCard key={item.id} item={item} />
-        ))}
+        {cIsLoading ? (
+          <Loader />
+        ) : (
+          cases?.cases.map((item: CasesType) => <CasesCard key={item.id} item={item} />)
+        )}
       </Row>
       <h1>{wirelessHeadphones?.title}</h1>
-      <Sort
-        typeofSorting={sortW}
-        setTypeofSorting={setSortW}
-        options={[
-          { value: 'name', title: 'Name' },
-          { value: 'price', title: 'Price' },
-          { value: 'discount', title: 'Discount' },
-          { value: 'popular', title: 'Popular' },
-        ]}
-      />
+      {hError
+        ? 'Oops, some error happened. Try to check the Internet connection and refresh page'
+        : !hIsLoading && (
+            <Sort
+              typeofSorting={sortH}
+              setTypeofSorting={setSortW}
+              options={[
+                { value: 'name', title: 'Name' },
+                { value: 'price', title: 'Price' },
+                { value: 'discount', title: 'Discount' },
+                { value: 'popular', title: 'Popular' },
+              ]}
+            />
+          )}
       <Row className='prodGridHeadphones'>
-        {sortedWirelessHeadphones?.map((item: IProducts) => (
-          <ProductCard key={item.id} item={item} isWireless={true} />
-        ))}
+        {wIsLoading ? (
+          <Loader />
+        ) : (
+          sortedWirelessHeadphones?.map((item: IProducts) => (
+            <ProductCard key={item.id} item={item} isWireless={true} />
+          ))
+        )}
       </Row>
       <h1>{headphones?.title}</h1>
-      <Sort
-        typeofSorting={sortH}
-        setTypeofSorting={setSortH}
-        options={[
-          { value: 'name', title: 'Name' },
-          { value: 'price', title: 'Price' },
-          { value: 'discount', title: 'Discount' },
-          { value: 'popular', title: 'Popular' },
-        ]}
-      />
+      {wError
+        ? 'Oops, some error happened. Try to check the Internet connection and refresh page'
+        : !wIsLoading && (
+            <Sort
+              typeofSorting={sortW}
+              setTypeofSorting={setSortH}
+              options={[
+                { value: 'name', title: 'Name' },
+                { value: 'price', title: 'Price' },
+                { value: 'discount', title: 'Discount' },
+                { value: 'popular', title: 'Popular' },
+              ]}
+            />
+          )}
       <Row className='prodGridHeadphones'>
-        {sortedHeadphones.map((item: IProducts) => (
-          <ProductCard key={item.id} item={item} isWired={true} />
-        ))}
+        {hIsLoading ? (
+          <Loader />
+        ) : (
+          sortedHeadphones.map((item: IProducts) => (
+            <ProductCard key={item.id} item={item} isWired={true} />
+          ))
+        )}
       </Row>
     </Container>
   )

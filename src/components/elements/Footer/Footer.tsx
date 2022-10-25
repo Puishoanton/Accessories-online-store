@@ -38,8 +38,8 @@ const Footer = () => {
         <Col className={styles.language}>
           <Row className={styles.languageBox}>
             <img width={24} height={24} src={planet} alt='Language' />
-            <h6>Eng</h6>
-            <h6>UA</h6>
+            <h6 onClick={() => alert('Imagine, you choose another language))')}>Eng</h6>
+            <h6 onClick={() => alert('Imagine, you choose another language))')}>UA</h6>
           </Row>
         </Col>
         <Col className={styles.socials}>

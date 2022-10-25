@@ -12,9 +12,14 @@ type SortProps = {
 
 const Sort: FC<SortProps> = ({ typeofSorting, setTypeofSorting, options }) => {
   return (
-    <select className={styles.select} value={typeofSorting} onChange={e => setTypeofSorting(e.target.value)}>
+    <select
+      className={styles.select}
+      value={typeofSorting}
+      onChange={e => setTypeofSorting(e.target.value)}>
       {options.map(({ value, title }) => (
-        <option value={value}>{title}</option>
+        <option key={value} value={value}>
+          {title}
+        </option>
       ))}
     </select>
   )

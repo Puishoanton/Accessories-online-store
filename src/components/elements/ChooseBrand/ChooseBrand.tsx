@@ -7,7 +7,6 @@ import styles from './ChooseBrand.module.scss'
 import { Link } from 'react-router-dom'
 import arrowImg from '../../../data/img/icon/arrow.svg'
 import phone from '../../../data/img/icon/mibile_phone.svg'
-import { BASKET_PATH } from '../../../routes/routes'
 import { IMobileBrand } from '../../../types/IMobileBrand'
 
 type ChooseBrandProps = {
@@ -38,7 +37,7 @@ const ChooseBrand: FC<ChooseBrandProps> = ({ brands }) => {
       <Col
         ref={popupOpenRef}
         onClick={e => {
-            setPopup(!popup)
+          setPopup(!popup)
         }}
         className={styles.phoneBrand}>
         <img className={styles.phoneImg} src={phone} alt='Mobile phone' />
@@ -71,9 +70,12 @@ const ChooseBrand: FC<ChooseBrandProps> = ({ brands }) => {
               }>
               {brand.model.map(model => (
                 <Link
-                  onClick={() => closeAllPopups()}
+                  onClick={() => {
+                    closeAllPopups()
+                    alert('Imagine, you choose another brand/model of phone')
+                  }}
                   key={Date.now() + Math.random()}
-                  to={BASKET_PATH}>
+                  to={'/'}>
                   {model}
                 </Link>
               ))}
