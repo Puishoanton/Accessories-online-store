@@ -1,6 +1,5 @@
 import React, { useRef, useState } from 'react'
 import { Button, Container, FloatingLabel, Form } from 'react-bootstrap'
-import ProductCard from '../components/elements/Card/ProductCard'
 import location from '../data/img/icon/location.svg'
 import visa from '../data/img/icon/visa.svg'
 import map from '../data/img/Rectangle 6.png'

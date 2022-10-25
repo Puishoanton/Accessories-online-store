@@ -15,8 +15,8 @@ const ProductHeadphonesPage = () => {
   const dispatch = useAppDispatch()
   const nav = useNavigate()
   const { id } = useParams()
-  const { data: d } = productAPI.useGetProductsQuery(HEADPHONESURL)
-  const arrayIndex = d.headPhones.findIndex((e: IProducts) => e.id === parseInt(id || ''))
+  const { data: d } = productAPI.useGetHeadphonesQuery()
+  const arrayIndex = d?.headPhones.findIndex((e: IProducts) => e.id === parseInt(id || ''))
   const { data } = productAPI.useGetHeadphonesByIdQuery({
     product: HEADPHONESURL,
     typeOfProduct: HEADPHONESARRAYNAME,

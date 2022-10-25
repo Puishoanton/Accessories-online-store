@@ -1,5 +1,5 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
-import { CasesType, IProducts } from '../types/IProducts'
+import { CasesType, ICases, IHeadphones, IProducts, IWireless } from '../types/IProducts'
 
 export const CASESTYPEURL = 0
 export const HEADPHONESURL = 1 as const
@@ -28,8 +28,14 @@ export const productAPI = createApi({
     baseUrl: 'https://puisho-store-default-rtdb.europe-west1.firebasedatabase.app',
   }),
   endpoints: builder => ({
-    getProducts: builder.query({
-      query: (typeOfFetching: number) => `/products/${typeOfFetching}.json`,
+    getAllCases: builder.query<ICases, void>({
+      query: () => `/products/0.json`,
+    }),
+    getHeadphones: builder.query<IHeadphones, void>({
+      query: () => `/products/1.json`,
+    }),
+    getWireless: builder.query<IWireless, void>({
+      query: () => `/products/2.json`,
     }),
     getCases: builder.query<CasesType, number>({
       query: typeOfCases => `/products/${CASESTYPEURL}/cases/${typeOfCases}.json`,

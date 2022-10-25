@@ -1,33 +1,33 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Container, Row } from 'react-bootstrap'
 import ProductCard from '../components/elements/Card/ProductCard'
 import previewImg from '../data/img/iPhone-13-Pro-Max-silver-1000x1000 1.png'
 import CasesCard from '../components/elements/Card/CasesCard'
-import {
-  CASESTYPEURL,
-  HEADPHONESURL,
-  productAPI,
-  WIRELESSHEADPHONESURL,
-} from '../services/productsService'
+import { productAPI } from '../services/productsService'
 import { CasesType, IProducts } from '../types/IProducts'
+import { useSortProducts } from '../hooks/useSortProducts'
+import Sort from '../components/UI/Sort/Sort'
 
 const MainPage = () => {
+  const [sortW, setSortW] = useState('popular')
+  const [sortH, setSortH] = useState('popular')
   const {
     data: headphones,
     isError: hError,
     isLoading: hIsloading,
-  } = productAPI.useGetProductsQuery(HEADPHONESURL)
-  const {
-    data: cases,
-    isError: cError,
-    isLoading: cIsloading,
-  } = productAPI.useGetProductsQuery(CASESTYPEURL)
+  } = productAPI.useGetHeadphonesQuery()
+  const { data: cases, isError: cError, isLoading: cIsloading } = productAPI.useGetAllCasesQuery()
   const {
     data: wirelessHeadphones,
     isError: wError,
     isLoading: wIsLoading,
-  } = productAPI.useGetProductsQuery(WIRELESSHEADPHONESURL)
+  } = productAPI.useGetWirelessQuery()
 
+  const sortedWirelessHeadphones = useSortProducts(
+    sortW,
+    wirelessHeadphones?.wirelessHeadPhones || []
+  )
+  const sortedHeadphones = useSortProducts(sortH, headphones?.headPhones || [])
   return (
     <Container className='mainContainer'>
       {false && wError && wIsLoading && cError && cIsloading && hError && hIsloading}
@@ -48,14 +48,34 @@ const MainPage = () => {
         ))}
       </Row>
       <h1>{wirelessHeadphones?.title}</h1>
+      <Sort
+        typeofSorting={sortW}
+        setTypeofSorting={setSortW}
+        options={[
+          { value: 'name', title: 'Name' },
+          { value: 'price', title: 'Price' },
+          { value: 'discount', title: 'Discount' },
+          { value: 'popular', title: 'Popular' },
+        ]}
+      />
       <Row className='prodGridHeadphones'>
-        {wirelessHeadphones?.wirelessHeadPhones.map((item: IProducts) => (
+        {sortedWirelessHeadphones?.map((item: IProducts) => (
           <ProductCard key={item.id} item={item} isWireless={true} />
         ))}
       </Row>
       <h1>{headphones?.title}</h1>
+      <Sort
+        typeofSorting={sortH}
+        setTypeofSorting={setSortH}
+        options={[
+          { value: 'name', title: 'Name' },
+          { value: 'price', title: 'Price' },
+          { value: 'discount', title: 'Discount' },
+          { value: 'popular', title: 'Popular' },
+        ]}
+      />
       <Row className='prodGridHeadphones'>
-        {headphones?.headPhones.map((item: IProducts) => (
+        {sortedHeadphones.map((item: IProducts) => (
           <ProductCard key={item.id} item={item} isWired={true} />
         ))}
       </Row>

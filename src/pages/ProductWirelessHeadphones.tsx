@@ -15,8 +15,8 @@ const ProductWirelessHeadphonesPage = () => {
   const nav = useNavigate()
   const dispatch = useAppDispatch()
   const { id } = useParams()
-  const { data: d } = productAPI.useGetProductsQuery(WIRELESSHEADPHONESURL)
-  const arrayIndex = d.wirelessHeadPhones.findIndex((e: IProducts) => e.id === parseInt(id || ''))
+  const { data: d } = productAPI.useGetWirelessQuery()
+  const arrayIndex = d?.wirelessHeadPhones.findIndex((e: IProducts) => e.id === parseInt(id || ''))
   const { data } = productAPI.useGetHeadphonesByIdQuery({
     product: WIRELESSHEADPHONESURL,
     typeOfProduct: 'wirelessHeadPhones',
@@ -85,10 +85,13 @@ const ProductWirelessHeadphonesPage = () => {
             </ul>
           </div>
           <div className={styles.buttonsBox}>
-            <Button onClick={() => {
+            <Button
+              onClick={() => {
                 dispatch(addToBasket(data || null))
                 nav(ORDER_PATH)
-              }}>BUY</Button>
+              }}>
+              BUY
+            </Button>
             <Button
               variant={isItemInsideBasket ? 'danger' : 'primary'}
               onClick={() => {

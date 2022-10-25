@@ -23,23 +23,23 @@ export interface CasesType {
   products: IProducts[]
   img: string
 }
-export interface ICases {
+export type ICases = {
   id: number
   title: string
   cases: CasesType[]
 }
-export interface IHeadphones {
+export type IHeadphones = {
   id: number
   title: string
   headPhones: IProducts[]
 }
-export interface IWireless {
+export type IWireless = {
   id: number
   title: string
   wirelessHeadPhones: IProducts[]
 }
-export interface IProducts {
-  ICases: any
-  IHeadphones: any
-  IProducts: any
-}
+// export interface IProducts {
+//   ICases: any
+//   IHeadphones: any
+//   IProducts: any
+// }
