@@ -7,8 +7,6 @@ Welcome to my first pet project.
 - Redux Toolkit 
 - Firebase
 - HTML, CSS(SCSS), JS
-## Demo: 
-[Accessories online store](https://puisho-store.web.app/)
 ## What is it about? 
 It is a small Internet store with its database.
 On the website, you can register/log in, and look through all products such as protective cases for mobile phones, and wireless and wired headphones. Also, you can visit every product page where read the description of each item and add it to your favorite or basket. 
