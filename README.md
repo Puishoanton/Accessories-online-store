@@ -25,5 +25,5 @@ npm i
 ```bash
 npm start
 ```
-## Please inform me if you finded out any bugs
+## Please inform me if you find out any bugs
 Thank you!
